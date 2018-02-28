@@ -1,0 +1,17 @@
+.Line {
+  color: white;
+  margin: 5px auto;
+  padding: 5px;
+  width: 60%;
+  text-align: left;
+  border: 1px solid transparent;
+}
+
+.Line .selected {}
+
+.Line:hover {
+  border: 1px solid #c0c0c0;
+  box-shadow: #b9b9b9;
+}
+
+.Line::after {}
