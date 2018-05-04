@@ -1,0 +1,60 @@
+div.title-header h1::before,
+div.title-header h1::after {
+  content: '+';
+  color: #ccc;
+  transition: 0.2s ease-in;
+}
+
+div.title-header h1:hover::before,
+div.title-header h1:hover::after {
+  color: white;
+}
+
+div.title-header {
+  text-align: center;
+  margin: auto;
+}
+
+div.title-header h1 {
+  color: white;
+}
+
+.Content {
+  text-align: center;
+}
+
+.PoemTypes {
+  margin: auto;
+  text-align: center;
+}
+
+.PoemTypes::before,
+.PoemTypes::after {
+  color: white;
+  content: '~';
+  margin: 15px;
+  font-weight: 400;
+}
+
+.PoemType {
+  font-weight: 400;
+  margin: 5px;
+  padding: 10px;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.PoemType:hover {
+  background-color: white;
+  border-radius: 10px;
+  color: #ccc;
+}
+
+.PoemType:active {
+  border: 2px solid black;
+}
+

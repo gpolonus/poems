@@ -2,10 +2,30 @@
 import React from 'react';
 import './Line.css';
 
-export default ({select, selected, line}) => {
+
+export default ({change, line, addLine, autoFocus}) => {
+
+  const classes = ['Line'];
+  if(line === '') {
+    classes.push('empty');
+  }
+
+  const keyHandler = ({which}) => {
+    // if([13].find(_which => _which === event.which)) {
+    if(which === 13) {
+      addLine();
+    }
+  }
+
   return (
-    <div className="Line" onClick={select}>
-      <p className={selected ? 'selected' : ''}>{line}</p>
-    </div>
+      <input
+        className={classes.join(' ')}
+        type="text"
+        value={line}
+        onChange={({target}) => change(target.value)}
+        onKeyUp={keyHandler}
+        autoFocus={autoFocus}
+        tabIndex="-1"
+      />
   );
 }

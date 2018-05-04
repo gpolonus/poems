@@ -1,29 +1,63 @@
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './Poems.css';
 import Poem from './Poem/Poem'
-import AddPoem from '../AddPoem/AddPoem';
+import PoemCard from './PoemCard/PoemCard';
+import CSSTransition from 'react-transition-group/CSSTransition';
+
+export const POEM_TYPES = {
+  NORMAL: 'normal',
+  CARDS: 'cards'
+};
+
+const POEM_MAP = {
+  [POEM_TYPES.NORMAL]: {
+    el: Poem,
+    style: { marginTop: '16px' }
+  },
+  [POEM_TYPES.CARDS]: {
+    el: PoemCard,
+    style: {}
+  }
+};
+
 
 export default class Poems extends Component {
-
   state = {
-    type: 'normal',
-    poems: []
-  };
-
-  addHandler(content) {
-    const poems = this.state.poems;
-    poems.push(content);
-    console.log(content);
-    this.setState({poems});
+    type: POEM_TYPES.NORMAL
   }
 
-  render() {
+  render () {
+    let {type, poems} = this.props;
+    
+    if(!POEM_MAP[type]) {
+      type = POEM_TYPES.NORMAL;
+    }
+    const poemType = POEM_MAP[this.state.type];
+    const PoemElement = poemType.el;
+    const style = poemType.style;
+    
     return (
-      <div>
-        <h1>POEMS</h1>
-        <AddPoem add={this.addHandler.bind(this)} />
-        {this.state.poems.map(poem => <Poem content={poem} />)}
+      <div 
+      // style={{position: 'relative', left: '-100%'}}
+      >
+      {
+        Object.entries(POEM_MAP).map(([key, value]) => (
+          <CSSTransition
+            mountOnEnter
+            unmountOnExit
+            classNames="stuff"
+            timeout={1000}
+            className="Poems"
+            style={value.style}
+            in={type === key}
+          >
+            <div>
+              {poems && poems.map((poem, index) => <value.el content={poem} key={index} />)}
+            </div>
+          </CSSTransition>
+        ))
+      }
       </div>
     );
   }

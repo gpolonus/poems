@@ -1,8 +1,11 @@
 .Poem {
-  width: 20%;
   display: inline-block;
-  margin: 16px auto;
-  border: 1px solid #bbb;
-  box-shadow: 0 2px 3px #aaa;
-  text-align: center;
+}
+
+.Poem:hover {
+  text-decoration: underline;
+}
+
+.Poem:active {
+  text-decoration: none;
 }

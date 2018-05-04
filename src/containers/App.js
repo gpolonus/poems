@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import Poems from '../components/Poems/Poems';
+import Layout from './Layout/Layout';
 
 class App extends Component {
+  
+  state = {
+    editing: false
+  };
   render() {
     return (
-      <div className="App">
-        <Poems />
-      </div>
+      <Layout className="App" />
     );
   }
 }

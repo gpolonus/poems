@@ -1,5 +1,11 @@
-div {
-  text-align: center;
-  margin: auto;
-  color: white;
+.Poems {
+  transition: all 1s ease-out;
+}
+
+.stuff-enter {
+  transform: translateX(-100%);
+}
+
+.stuff-exit {
+  transform: translateX(100%);
 }
